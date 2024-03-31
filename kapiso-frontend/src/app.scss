@@ -1,0 +1,8 @@
+@import "./style.scss";
+
+.appLayout{
+    @include useTheme($themes){
+        background-color: themed('bgColor');
+    }
+    
+}

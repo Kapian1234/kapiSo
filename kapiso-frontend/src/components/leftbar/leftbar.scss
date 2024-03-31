@@ -1,0 +1,39 @@
+@import "../../style.scss";
+
+.leftbar{
+    @include useTheme($themes){
+        margin: 10px;
+        border-radius: 5px;
+        position: sticky;
+        left: 0;
+        top: 70px;
+        padding: 20px;
+        background-color: themed('sideBarColor');
+        overflow: scroll;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        .menu{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: themed('textColor');
+            .item{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                // img{
+                //     width: 30px;
+                //     height: 30px;
+                //     border-radius: 50%;
+                //     object-fit: cover;
+                // }
+                span{
+                    font-size: 14px;
+                    color: themed('textColor');
+                }
+            }
+        }
+    }
+
+}

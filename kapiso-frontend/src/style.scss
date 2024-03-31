@@ -1,0 +1,54 @@
+$themes:(
+    light:(
+        textColor: black,
+        textSoft: rgb(129, 129, 129),
+        bgColor: rgb(255, 255, 255),
+        bgSoft: lightgray,
+        navBarColor: rgb(199, 199, 199),
+        sideBarColor: #dedede,
+        logoColor: black,
+        mainColor: blue,
+    ),
+    dark:(
+        textColor: white,
+        textSoft: rgb(201, 201, 201),
+        bgColor: rgb(19, 19, 19),
+        bgSoft: rgb(45, 45, 45),
+        navBarColor: rgb(97, 79, 79),
+        sideBarColor: #292929,
+        logoColor: white,
+        mainColor: lightblue,
+    ),
+);
+
+
+// 这是一个混合宏，它定义了如何应用主题。
+@mixin useTheme($themes) {
+    // 这里我们遍历每个主题和它的样式。
+    @each $theme, $map in $themes {
+      // 对于每个主题，我们创建一个新的类名。
+      .theme-#{$theme} & {
+        // 这里我们将主题的样式值存储在一个变量中。
+        $theme-map: () !global;
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), "#{$key}");
+          $theme-map: map-merge(
+            $theme-map,
+            (
+              $key: $value,
+            )
+          ) !global;
+        }
+        // 这里允许我们插入额外的样式。
+        @content;
+        // 清除变量，以便下次使用。
+        $theme-map: null !global;
+      }
+    }
+  }
+  
+// 这是一个函数，它允许我们获取当前主题的样式值。
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+

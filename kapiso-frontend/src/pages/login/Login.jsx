@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './login.scss'
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../context/authContext';
 
 function Login() {
 
@@ -8,6 +9,11 @@ function Login() {
   const handleMoveButtonClick = () => {
     setIsMoved(prevState => !prevState);
   };
+
+  const {currentUser, login} = useContext(AuthContext);
+  const handleLogin = () =>{
+    login();
+  }
 
   return (
     <div className='login'>
@@ -28,7 +34,7 @@ function Login() {
           <form>
             <input type='text' placeholder='用户名' />
             <input type='password' placeholder='密码' />
-            <button>登录</button>
+            <button onClick={handleLogin}>登录</button>
           </form>
         </div>
 

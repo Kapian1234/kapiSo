@@ -1,0 +1,7 @@
+@import "../../style.scss";
+
+.home{
+    @include useTheme($themes){
+        padding: 20px 20px;
+    }
+}
