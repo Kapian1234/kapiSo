@@ -11,6 +11,7 @@
         top: 0;
         color: themed('logoColor');
         border-bottom: 1px solid themed("border");
+        z-index: 99;
 
         .left{
             width: 50%;

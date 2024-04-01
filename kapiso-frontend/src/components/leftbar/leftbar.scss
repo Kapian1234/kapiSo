@@ -3,6 +3,7 @@
 .leftbar{
     @include useTheme($themes){
         margin: 10px;
+        margin-top: 20px;
         border-radius: 10px;
         border: solid 1px themed('border');
         position: sticky;

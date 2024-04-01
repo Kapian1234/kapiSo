@@ -3,6 +3,7 @@
 .appLayout{
     @include useTheme($themes){
         background-color: themed('bgColor');
+        min-height: 100vh;
     }
     
 }
