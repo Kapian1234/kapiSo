@@ -23,10 +23,10 @@ const NavBar = () => {
     <div className='navbar'>
         
         <div className='left'>
-            <Link to='/' style={{textDecoration:'none'}}>
+            <Link to='/' style={{textDecoration:'none', cursor:'pointer'}}>
                 <span>kapiSo</span>
             </Link>
-            <HomeIcon/>
+            <HomeIcon />
             {
                 darkMode ? <LightModeIcon onClick={toggle}/> : <DarkModeIcon onClick={toggle}/>
             }

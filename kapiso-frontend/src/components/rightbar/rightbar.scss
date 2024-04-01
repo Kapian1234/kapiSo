@@ -3,6 +3,7 @@
 .rightbar{
     @include useTheme($themes)
     {
+        min-width: 300px;
         position: sticky;
         left: 0;
         top: 60px;
@@ -14,10 +15,11 @@
         }
 
         .item{
-            padding: 20px;
+            padding: 16px;
             margin-bottom: 20px;
-            border-radius: 5px;
+            border-radius: 10px;
             background-color: themed('sideBarColor');
+            border: solid 1px themed('border');
 
             // -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
             // -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
@@ -29,6 +31,7 @@
                 color: themed('textColor');
             }
             .user{
+                border-top: 1px solid themed("border");
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -80,14 +83,15 @@
                     button{
                         border: none;
                         padding: 5px;
-                        color: themed('bgSoft');
+                        color: themed('navBarColor');
+                        font-weight: bolder;
                         cursor: pointer;
                         border-radius: 5px;
                         &:first-child{
                             background-color: themed('mainColor');
                         }
                         &:last-child{
-                            background-color: themed('textSoft');
+                            background-color: themed('textColor');
                         }
                     }
                 }
