@@ -26,7 +26,10 @@ const NavBar = () => {
             <Link to='/' style={{textDecoration:'none', cursor:'pointer'}}>
                 <span>kapiSo</span>
             </Link>
-            <HomeIcon />
+            <Link to='/' style={{textDecoration:'none', cursor:'pointer'}}>
+                <HomeIcon />
+            </Link>
+            
             {
                 darkMode ? <LightModeIcon onClick={toggle}/> : <DarkModeIcon onClick={toggle}/>
             }

@@ -4,6 +4,27 @@
     @include useTheme($themes){
         background-color: themed('bgColor');
         min-height: 100vh;
+        min-width: 100%;
     }
     
+}
+
+.mainPage{
+    display: flex,;
+    padding: 0 20px;
+    @include mobile{
+        padding: 0px 0px;
+    }
+}
+
+.leftDiv{
+    @include mobile{
+        display: none;
+    }
+}
+
+.rightDiv{
+    @include mobile{
+        display: none;
+    }
 }

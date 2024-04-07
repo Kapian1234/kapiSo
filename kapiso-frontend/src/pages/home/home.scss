@@ -3,5 +3,8 @@
 .home{
     @include useTheme($themes){
         padding: 20px 20px;
+        @include mobile{
+            padding: 0px 0px;
+        }
     }
 }

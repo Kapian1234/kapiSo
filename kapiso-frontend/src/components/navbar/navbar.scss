@@ -14,14 +14,23 @@
         z-index: 99;
 
         .left{
+            overflow: hidden;
             width: 50%;
             display: flex;
             align-items: center;
             gap: 20px;
+            @include mobile{
+                width: 100%;
+                gap: 10px;
+                justify-content: space-between;
+            }
             span{
                 font-weight: bold;
                 font-size: 28px;
                 color: themed('mainColor');
+                @include mobile{
+                    font-size: 24px;
+                }
             }
             .search{
                 width: 50%;
@@ -31,16 +40,25 @@
                 background-color: themed('input');
                 border-radius: 5px;
                 padding: 5px;
+                // overflow: hidden;
                 input{
                     background-color: rgba($color: #000000, $alpha: 0);
                     border: none;
                     outline: none;
                     color: themed('textColor');
+                    overflow: hidden;
+                }
+                @include mobile{
+                    width: 30%;
+                    gap: 5px;
                 }
             }
         }
 
         .right{
+            @include mobile{
+                display: none;
+            }
             display: flex;
             align-items: center;
             gap: 20px;

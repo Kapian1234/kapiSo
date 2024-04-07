@@ -29,10 +29,10 @@ function App() {
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <div className='appLayout'>
           <NavBar/>   
-        <div style={{display: 'flex', padding: '0 20px'}}>
-          <div style={{flex: '2'}}><LeftBar/></div>
+        <div className='mainPage'>
+          <div className='leftDiv' style={{flex: '2'}}><LeftBar/></div>
           <div style={{flex: '6'}}><Outlet/></div>
-          <div style={{flex: '3'}}><RightBar/></div>
+          <div className='rightDiv' style={{flex: '3'}}><RightBar/></div>
         </div> 
         </div>  
       </div>

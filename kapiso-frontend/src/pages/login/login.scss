@@ -1,7 +1,11 @@
+@import "../../style.scss";
+
 $c1:#FBF3D5;//rgb(251, 243, 213)
-$c2:#D6DAC8;//rgb(214, 218, 200)
-$c3:#9CAFAA;//rgb(156, 175, 170)
-$c4:#EFBC9B;//rgb(239, 188, 155)
+$c2:#ffffff;//rgb(214, 218, 200)
+$c3:#f4f4f4;//rgb(156, 175, 170)
+$c4:#FA7070;//rgb(239, 188, 155)
+
+
 
 .login{
     height: 100vh;
@@ -41,7 +45,7 @@ $c4:#EFBC9B;//rgb(239, 188, 155)
                     padding: 10px 10px;
                     background-color: rgba($color: #000000, $alpha: 0);
                 }
-                input:
+                // input:
                 button{
                     width: 50%;
                     padding: 10px;
@@ -86,7 +90,7 @@ $c4:#EFBC9B;//rgb(239, 188, 155)
                 padding: 10px;
                 border: none;
                 background-color: white;
-                color: $c3;
+                color: black;
                 font-weight: bold;
                 cursor: pointer;
             }
