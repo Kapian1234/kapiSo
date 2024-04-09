@@ -26,6 +26,10 @@ $c4:#FA7070;//rgb(239, 188, 155)
         border-radius: 10px;
         position: relative;
 
+        -webkit-box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.15);
+
         .left, .right{
             flex: 1;
             display: flex;
@@ -51,18 +55,27 @@ $c4:#FA7070;//rgb(239, 188, 155)
                     padding: 10px;
                     border: none;
                     background-color: $c4;
-                    color: black;
+                    color: rgba(black, 0.6);
                     font-weight: bold;
+                    font-size: 14px;
                     cursor: pointer;
+                    border-radius: 10px;
+                }
+                p{
+                    font-size: 14px;
+                    color: rgba(black, 0.7);
                 }
             }
         }
 
         .cover{
+            // border-top: 2px solid lightgray;
             width: 50%;
             height: 100%;
             border-radius: 10px;
-            background: linear-gradient(rgba($c1, 1), rgba($c4, 1));
+            background: linear-gradient(rgba($c2, 0.5), rgba($c4, 1));
+            backdrop-filter: blur(10px); /* 背景模糊效果 */
+            -webkit-backdrop-filter: blur(10px); /* 兼容Safari浏览器 */
             padding: 50px 30px;
             box-sizing: border-box;
             display: flex;
@@ -74,30 +87,168 @@ $c4:#FA7070;//rgb(239, 188, 155)
             left: 0;
             z-index: 10;
             transition: transform 0.5s ease; /* 添加过渡效果 */
+            -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.05);
             h1{
                 position: absolute;
                 top: 0;
                 line-height: 100px;
+                font-size: 40px;
+                color: $c4;
             }
             p{
-
+                font-size: 14px;
+                color: rgba(black, 0.5);
+                font-weight: 600;
             }
             span{
-
+                font-size: 16px;
+                color: rgba(black, 0.7);
+                font-weight: bold;
             }
             button{
                 width: 50%;
                 padding: 10px;
                 border: none;
-                background-color: white;
-                color: black;
+                background-color: rgba(white,0.3);
+                color: rgba(black,0.7);
                 font-weight: bold;
                 cursor: pointer;
+                border-radius: 10px;
             }
         }
         .cover.move {
             right: 0; 
             transform: translateX(100%);
           }
+    }
+}
+
+@include mobile{
+    .login{
+        // height: 100%;
+        background-color: $c3;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        padding: 0px 0px;
+        .card{
+            width: 80%;
+            min-width: 100px;
+            max-width: none;
+            min-height: 400px;
+            height: 80vh;
+            background-color: $c2;
+            display: flex;
+            // flex-direction: column;
+            flex-direction: column-reverse;
+            // overflow: hidden;
+            overflow: scroll;
+            border-radius: 10px;
+            position: relative;
+            padding-bottom: 20px;
+            gap: 20px;
+
+            -webkit-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.07);
+            -moz-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.07);
+            box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.07);
+    
+            .left, .right{
+                justify-content: space-between;
+                height: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                padding: 40px 26px;
+                h2{
+                    font-size: 30px;
+                    color: rgba(black, 0.7)
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    // align-items: center;
+                    // justify-content: space-between;
+                    
+                    input{
+                        width: 90%;
+                        align-self: center;
+                        border: none;
+                        border-bottom: 2px solid darkgray;
+                        padding: 10px 10px;
+                        background-color: rgba($color: #000000, $alpha: 0);
+                    }
+                    // input:
+                    button{
+                        align-self: flex-end;
+                        width: 35%;
+                        margin-top: 20px;
+                        padding: 10px;
+                        border: none;
+                        background-color: $c4;
+                        color: rgb(59, 59, 59);
+                        font-weight: bold;
+                        cursor: pointer;
+                        border-radius: 10px;
+                    }
+                }
+            }
+    
+            .cover{
+                border-top: none;
+                width: 100%;
+                height: 50%;
+                border-radius: 0px;
+                background: linear-gradient(rgba($c1, 1), rgba($c1, 1));
+                padding: 10px 30px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                justify-content: flex-start;
+                position: relative;
+                bottom: 10px;
+                left: 0;
+                z-index: 10;
+                transition: transform 0.5s ease; /* 添加过渡效果 */
+                border-bottom: 3px dashed $c4;
+                h1{
+                    position: relative;
+                    top: 0;
+                    line-height: 60px;
+                    margin: 0;
+                    align-self: center;
+                    font-size: 40px;
+                    color: rgba($c4, 1);
+                }
+                p{
+                    display: none;
+                }
+                span{
+                    display: none;
+                }
+                button{
+                    display: none;
+                    width: 50%;
+                    padding: 10px;
+                    border: none;
+                    background-color: white;
+                    color: black;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            }
+            .cover.initial {
+            transform: translateY(0); /* 在底部 */
+            }
+            
+            .cover.move {
+            transform: translateY(100%); /* 移动到顶部 */
+            }
+
+        }
     }
 }

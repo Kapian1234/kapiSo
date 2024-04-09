@@ -12,6 +12,7 @@ import './navbar.scss';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
+import '../../hover.css';
 
 const NavBar = () => {
 
@@ -23,28 +24,28 @@ const NavBar = () => {
     <div className='navbar'>
         
         <div className='left'>
-            <Link to='/' style={{textDecoration:'none', cursor:'pointer'}}>
-                <span>kapiSo</span>
+            <Link to='/'>
+                <span className='hvr-skew'>kapiSo</span>
             </Link>
-            <Link to='/' style={{textDecoration:'none', cursor:'pointer'}}>
-                <HomeIcon />
+            <Link to='/' >
+                <HomeIcon className='hvr-grow'/>
             </Link>
             
             {
-                darkMode ? <LightModeIcon onClick={toggle}/> : <DarkModeIcon onClick={toggle}/>
+                darkMode ? <LightModeIcon onClick={toggle} className='hvr-grow'/> : <DarkModeIcon onClick={toggle} className='hvr-grow'/>
             }
-            <AppsIcon/>
+            <AppsIcon className='hvr-grow'/>
             <div className="search">
                 <SearchIcon/>
-                <input type="text" placeholder='搜索...'/>
+                <input type="text" placeholder='搜索...' className='hvr-forward'/>
             </div>
         </div>
         
         <div className='right'>
-            <AccountCircleIcon/>
-            <EmailIcon/>
-            <NotificationsIcon/>
-            <div className="user">
+            <AccountCircleIcon className='hvr-grow'/>
+            <EmailIcon className='hvr-grow'/>
+            <NotificationsIcon className='hvr-grow'/>
+            <div className="user hvr-grow">
                 <img src={currentUser.profilePic} alt=''/>
                 <span>{currentUser.name}</span>
             </div>

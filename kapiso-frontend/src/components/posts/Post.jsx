@@ -10,6 +10,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import ShareIcon from '@mui/icons-material/Share';
 import Comments from '../comments/Comments';
+import '../../hover.css';
 
 const Post = ({post}) => {
 
@@ -25,7 +26,7 @@ const Post = ({post}) => {
       <div className="container">
         <div className="user">
           <div className="userInfo">
-            <Link to={'/profile/'+post.userId}><img src={post.profilePic} alt=''/></Link>
+            <Link to={'/profile/'+post.userId}><img src={post.profilePic} alt='' className='hvr-grow'/></Link>
             <div className="details">
               <Link to={'/profile/'+post.userId} style={{textDecoration: 'none'}}>
                 <span className='name'>{post.name}</span>           
@@ -33,7 +34,7 @@ const Post = ({post}) => {
               <span className='date'>1 min ago</span>             
             </div>
           </div>
-          <MoreHorizIcon/>
+          <MoreHorizIcon className='hvr-grow'/>
         </div>
         
         <div className="content">
@@ -43,15 +44,15 @@ const Post = ({post}) => {
         
         <div className="info">
           <div className="item">
-            {liked? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+            {liked? <FavoriteIcon className='hvr-grow'/> : <FavoriteBorderIcon className='hvr-grow'/>}
             12
           </div>
           <div className="item" onClick={commentsToggle}>
-            <CommentIcon/>
+            <CommentIcon className='hvr-grow'/>
             8
           </div>
           <div className="item">
-            <ShareIcon/>
+            <ShareIcon className='hvr-grow'/>
           </div>
                    
         </div>

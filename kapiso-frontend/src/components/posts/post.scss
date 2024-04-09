@@ -7,7 +7,11 @@
             border-radius: 10px;
             border: solid 1px themed('border');
             text-decoration: none;
-            padding: 20px;
+            padding: 16px;
+            margin: 0px 10px;
+            -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.07);
+            -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.07);
+            box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.07);
 
             .user{
                 color: themed('textColor');
@@ -16,7 +20,7 @@
                 justify-content: space-between;
                 .userInfo{
                     display: flex;
-                    gap: 20px;
+                    gap: 10px;
 
                     img{
                         width: 40px;
@@ -42,7 +46,7 @@
             }
 
             .content{
-                margin: 20px 0px;
+                margin: 10px 0px;
                 p{
                     color: themed('textColor');
                 }
@@ -51,7 +55,6 @@
                     width: 100%;
                     max-height: 500px;
                     object-fit: cover;
-                    margin-top: 20px;
                 }
             }
 
