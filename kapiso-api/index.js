@@ -1,15 +1,19 @@
 import express from "express";
-import userRoutes from './routes/users.js'
-import commentRoutes from './routes/comments.js'
-import authRoutes from './routes/auth.js'
-import postRoutes from './routes/posts.js'
-import likeRoutes from './routes/likes.js'
-import cors from "cors"
-import cookieParser from "cookie-parser"
+import userRoutes from './routes/users.js';
+import commentRoutes from './routes/comments.js';
+import authRoutes from './routes/auth.js';
+import postRoutes from './routes/posts.js';
+import likeRoutes from './routes/likes.js';
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
-const app = express()
+const app = express();
 
 //中间件
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Credentials", true)//设置响应头
+    next()
+})
 /* 使用 express.json() 中间件来解析JSON请求,它会处理所有传入的请求，
 并尝试将请求体（body）中的JSON字符串转换为JavaScript对象.
 之后，在请求处理函数中，可以通过 req.body 访问这个对象。*/

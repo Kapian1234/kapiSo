@@ -10,15 +10,20 @@ import './style.scss';
 import './app.scss';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
 
 function App() {
   
   const {currentUser} = useContext(AuthContext); //登陆状态
+  
+  const queryClient = new QueryClient()
+  
 
   const ProtectedRoute = ({children}) =>{
-    // if(!currentUser){
-    //   return <Navigate to="/login"/>
-    // }
+    if(!currentUser){
+      return <Navigate to="/login"/>
+    }
     return children
   }//访问保护
 
@@ -26,16 +31,17 @@ function App() {
 
   const Layout = () =>{
     return(
-      <div className={`theme-${darkMode ? "dark" : "light"}`}>
-        <div className='appLayout'>
-          <NavBar/>   
-        <div className='mainPage'>
-          <div className='leftDiv' style={{flex: '2'}}><LeftBar/></div>
-          <div style={{flex: '6'}}><Outlet/></div>
-          <div className='rightDiv' style={{flex: '3'}}><RightBar/></div>
-        </div> 
-        </div>  
-      </div>
+      
+        <div className={`theme-${darkMode ? "dark" : "light"}`}>
+          <div className='appLayout'>
+            <NavBar/>   
+            <div className='mainPage'>
+              <div className='leftDiv' style={{flex: '2'}}><LeftBar/></div>
+              <div style={{flex: '6'}}><Outlet/></div>
+              <div className='rightDiv' style={{flex: '3'}}><RightBar/></div>
+            </div> 
+          </div>  
+        </div>
     )
   }//主页布局
 
@@ -47,7 +53,7 @@ function App() {
     {
       path: '/',
       element: <ProtectedRoute><Layout/></ProtectedRoute>,//访问保护
-      children: [
+      children: [//设置不同路径下<Outlet>显示内容
         {
           path: '/',
           element: <Home/>,

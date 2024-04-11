@@ -1,51 +1,24 @@
 import React from 'react'
 import './posts.scss'
 import Post from './Post'
+import { useQuery } from "@tanstack/react-query"
+import { makeRequest } from "../../axios"
 
 const Posts = () => {
 
-  const posts = [
-    {
-      id: 3,
-      userId: 1,
-      name: 'xiaoming',
-      profilePic: 'https://a.520gexing.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg',
-      desc: '你好呀',
-      img: 'http://doc.yaojieyun.com/static.runoob.com/images/demo/demo3.jpg',
-    },
-    {
-      id: 3,
-      userId: 1,
-      name: 'xiaoming',
-      profilePic: 'https://a.520gexing.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg',
-      desc: '你好呀',
-      img: 'http://doc.yaojieyun.com/static.runoob.com/images/demo/demo3.jpg',
-    },
-    {
-      id: 3,
-      userId: 1,
-      name: 'xiaoming',
-      profilePic: 'https://a.520gexing.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg',
-      desc: '你好呀',
-      img: 'http://doc.yaojieyun.com/static.runoob.com/images/demo/demo3.jpg',
-    },
-    {
-      id: 3,
-      userId: 1,
-      name: 'xiaoming',
-      profilePic: 'https://a.520gexing.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg',
-      desc: '你好呀',
-      img: 'http://doc.yaojieyun.com/static.runoob.com/images/demo/demo3.jpg',
-    },
-  ]
+//   const { isLoading, error, data } = useQuery(["posts"], () =>
+//     makeRequest.get("/posts").then((res) => {
+//       return res.data;
+//   })
+// );
 
   return (
     <div className='posts'>
-      {
-        posts.map(post =>(
-          <Post post={post}/>
+      {/* {
+        data.map((post) =>(
+          <Post key={post.id} post={post}/>
         ))
-      }
+      } */}
     </div>
   )
 }

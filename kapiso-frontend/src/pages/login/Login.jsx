@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './login.scss'
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
@@ -94,16 +94,20 @@ function Login() {
     return true
   }
   const {currentUser, setCurrentUser} = useContext(AuthContext);//当前用户信息
+  const navigate = useNavigate()//跳转函数
   const handleLogin = async (e) =>{
     e.preventDefault()
     if (checkLogin(loginInputs))//检查表单
     {
       try{
-        const res = await axios.post('http://localhost:8800/api/auth/login', loginInputs, {withCredentials: true/*请求会携带如cookies的凭证，以支持跨源请求*/})
+        const res = await axios.post('http://localhost:8800/api/auth/login', loginInputs, {withCredentials: true,/*请求会携带如cookies的凭证，以支持跨源请求*/})
+        // console.log(res.data)
         setCurrentUser(res.data);//从服务器得到用户信息后设置当前用户
-        setErrLogin(null)         
+        setErrLogin(null)
+        navigate('/')
       }
       catch (error){
+        // console.log(error.response.data)
         setErrLogin(error.response.data)
       }
     }
