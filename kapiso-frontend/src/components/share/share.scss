@@ -1,0 +1,99 @@
+@import "../../style.scss";
+
+.share {
+  @include useTheme($themes) {
+    background-color: themed('sideBarColor');
+    border-radius: 10px;
+    border: solid 1px themed('border');
+    text-decoration: none;
+    padding: 16px;
+    margin: 0px 10px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.07);
+
+    .container {
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          align-items: center;
+          flex: 3;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          input {
+            border: none;
+            outline: none;
+            padding: 20px 10px;
+            background-color: transparent;
+            width: 60%;
+            color: themed("textColor");
+          }
+        }
+        .right {
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          .file {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0px;
+          }
+        }
+      }
+
+      .bottom {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .left {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+
+          .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: themed('textColor');
+            cursor: pointer;
+
+            img {
+              height: 20px;
+            }
+
+            span {
+              font-size: 12px;
+              color: gray;
+            }
+          }
+        }
+        .right {
+          button {
+            border: none;
+            padding: 5px;
+            color: themed('navBarColor');
+            cursor: pointer;
+            background-color: themed('mainColor');
+            font-weight: 600;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+    @include mobile{
+      margin: 20px 20px;
+    }
+  }
+}

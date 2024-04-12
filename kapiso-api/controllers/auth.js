@@ -21,7 +21,7 @@ export const login = (req, res) => {
         //生成token
         const token = jwt.sign({ id: data[0].id }, "secretkey")//签名直接写在代码里，不推荐！
         const { password, ...others } = data[0]//从data[0]对象中移除password字段，并将剩余的属性存储在others变量中
-        res.cookie(//将token存到cookie里
+        res.cookie(//将token传回给用户
             "accessToken", 
             token, 
             {httpOnly: true}

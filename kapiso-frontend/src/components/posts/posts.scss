@@ -1,11 +1,18 @@
 @import '../../style.scss';
 
 .posts{
-    
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    @include mobile{
-        margin: 20px 10px;
+    @include useTheme($themes){
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .prompt{
+            margin-top: 100px;
+            align-self: center;
+            color: themed('textSoft');
+        }
+
+        @include mobile{
+            margin: 20px 10px;
+        }
     }
 }

@@ -6,19 +6,27 @@ import { makeRequest } from "../../axios"
 
 const Posts = () => {
 
-//   const { isLoading, error, data } = useQuery(["posts"], () =>
-//     makeRequest.get("/posts").then((res) => {
-//       return res.data;
-//   })
-// );
+  const { isLoading, error, data } = useQuery(
+    {
+      queryKey: ["posts"],
+      queryFn: () => makeRequest.get("/posts").then((res) => {return res.data})
+    }
+  )
+  // console.log(data)
 
   return (
     <div className='posts'>
-      {/* {
-        data.map((post) =>(
-          <Post key={post.id} post={post}/>
-        ))
-      } */}
+      {
+        error?
+          <p className='prompt'>加载失败</p>
+          :
+          isLoading?
+            <p className='prompt'>加载中</p>
+            :
+            data.map((post) =>(
+              <Post key={post.id} post={post}/>
+            ))
+      }
     </div>
   )
 }

@@ -39,7 +39,7 @@ const Post = ({post}) => {
         
         <div className="content">
           <p>{post.desc}</p>
-          <img src={post.img} alt=''/>
+          {post.img? <img src={post.img} alt=''/> : null}
         </div>
         
         <div className="info">

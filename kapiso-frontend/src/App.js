@@ -31,7 +31,7 @@ function App() {
 
   const Layout = () =>{
     return(
-      
+      <QueryClientProvider client={queryClient}>
         <div className={`theme-${darkMode ? "dark" : "light"}`}>
           <div className='appLayout'>
             <NavBar/>   
@@ -42,6 +42,7 @@ function App() {
             </div> 
           </div>  
         </div>
+      </QueryClientProvider>
     )
   }//主页布局
 
