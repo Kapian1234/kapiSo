@@ -11,6 +11,8 @@ import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import ShareIcon from '@mui/icons-material/Share';
 import Comments from '../comments/Comments';
 import '../../hover.css';
+import moment from "moment"
+moment.locale('zh-cn')
 
 const Post = ({post}) => {
 
@@ -31,7 +33,7 @@ const Post = ({post}) => {
               <Link to={'/profile/'+post.userId} style={{textDecoration: 'none'}}>
                 <span className='name'>{post.name}</span>           
               </Link> 
-              <span className='date'>1 min ago</span>             
+              <span className='date'>{moment(post.createdTime).fromNow()}</span>             
             </div>
           </div>
           <MoreHorizIcon className='hvr-grow'/>
@@ -39,7 +41,7 @@ const Post = ({post}) => {
         
         <div className="content">
           <p>{post.desc}</p>
-          {post.img? <img src={post.img} alt=''/> : null}
+          {post.img? <img src={'./upload/' + post.img} alt=''/> : null}
         </div>
         
         <div className="info">

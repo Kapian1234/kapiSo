@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
+import CancelIcon from '@mui/icons-material/Cancel';
 const Share = () => {
 
     const { currentUser } = useContext(AuthContext);
@@ -23,11 +24,29 @@ const Share = () => {
     )
 
 
-    const handleShare = (e) =>{
-        e.preventDefault()
-        mutation.mutate({desc})
-        setDesc('')
+    const upload = async () => {
+        try{
+            const formData = new FormData()//支持发送文件等二进制数据
+            formData.append('file', file)
+            const res = await makeRequest.post('/upload', formData)
+            return res.data
+        }
+        catch(err){
+            console.log(err)
+        }
     }
+
+
+    const handleShare = async (e) =>{
+        e.preventDefault()
+        let imgUrl = ""
+        if(file) imgUrl = await upload()
+        mutation.mutate({desc, img:imgUrl})
+        console.log(imgUrl)
+        setDesc('')
+        setFile(null)
+    }
+
 
 
     return (
@@ -43,11 +62,14 @@ const Share = () => {
                         onChange={(e) => setDesc(e.target.value)}
                     />
                     </div>
-                    {/* <div className="right">
+                    <div className="right">
                     {file && (
-                        <img className="file" alt="" src={URL.createObjectURL(file)} />
+                        <div className="imgPreview">
+                            <img className="file" alt="" src={URL.createObjectURL(file)} />
+                            <div className="cancel" onClick={()=>{setFile(null)}}><CancelIcon/></div> 
+                        </div>
                     )}
-                    </div> */}
+                    </div>
                 </div>
 
                 <div className="bottom">
@@ -56,7 +78,7 @@ const Share = () => {
                             type="file"
                             id="file"
                             style={{ display: "none" }}
-                            onChange={(e) => setFile(e.target.file[0])}//选择第一个文件
+                            onChange={(e) => setFile(e.target.files[0])}//选择第一个文件
                         />
                         <label htmlFor="file">
                             <div className="item">

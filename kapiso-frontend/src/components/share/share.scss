@@ -43,12 +43,30 @@
           flex: 1;
           display: flex;
           justify-content: flex-end;
-          .file {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 0px;
+          .imgPreview{
+            position: relative;
+            .file {
+              width: 100px;
+              height: 100px;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+            .cancel{
+              position: absolute;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 18px;
+              height: 18px;
+              top: -5px;
+              right: -5px;
+              color: rgba(themed("textColor"),0.9);
+              border-radius: 50%;
+              background-color: rgba(themed("bgColor"),0.9);
+              cursor: pointer;
+            }            
           }
+
         }
       }
 

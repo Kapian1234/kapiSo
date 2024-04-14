@@ -6,6 +6,7 @@ import postRoutes from './routes/posts.js';
 import likeRoutes from './routes/likes.js';
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import multer from "multer";
 
 const app = express();
 
@@ -22,6 +23,22 @@ app.use(cors({
     origin: "http://localhost:3000",
 }))//定义哪些来源可以访问资源
 app.use(cookieParser())//解析HTTP请求头中的Cookie并把它们作为对象挂载到req.cookies
+
+//文件上传
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '../kapiso-frontend/public/upload')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname)
+    }
+})
+const upload = multer({ storage: storage })
+app.post("/api/upload", upload.single('file'), (req,res)=>{
+    const file = req.file
+    res.status(200).json(file.filename)
+})
+
 
 app.use('/api/users', userRoutes)
 app.use('/api/posts', postRoutes)
