@@ -2,20 +2,31 @@ import React, { useContext } from 'react'
 import './comments.scss'
 import { AuthContext } from '../../context/authContext'
 import SendIcon from '@mui/icons-material/Send';
+import { makeRequest } from "../../axios"
+import { useQuery } from "@tanstack/react-query"
+import moment from "moment"
+require('moment/locale/zh-cn')
 
-const Comments = () => {
+const Comments = ({postId}) => {
 
     const {currentUser} = useContext(AuthContext)
 
-    const comments = [
+    // const comments = [
+    //     {
+    //         id: 3,
+    //         userId: 1,
+    //         name: 'xiaoming',
+    //         profilePic: 'https://a.520gexing.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg',
+    //         desc: '这是一个评论',
+    //       },
+    // ]
+
+    const { isLoading, error, data } = useQuery(
         {
-            id: 3,
-            userId: 1,
-            name: 'xiaoming',
-            profilePic: 'https://a.520gexing.com/uploads/allimg/2021042109/uqaqhuvavt0.jpg',
-            desc: '这是一个评论',
-          },
-    ]
+          queryKey: ["comments"],
+          queryFn: () => makeRequest.get("/comments?postId="+postId).then((res) => {return res.data})
+        }
+      )
 
   return (
     <div className='comments'>
@@ -25,7 +36,8 @@ const Comments = () => {
             <SendIcon/>
         </div>
         {
-            comments.map(
+            isLoading? '加载中' :
+            data.map(
                 (comment) => {
                     return(
                         <div className="comment">
@@ -34,7 +46,7 @@ const Comments = () => {
                                     <img src={comment.profilePic} alt=''/>
                                     <span>{comment.name}</span>                                     
                                 </div>
-                                <div className="date">1小时前</div>        
+                                <div className="date">{moment(comment.createdTime).fromNow()}</div>        
                             </div>
                             <p>{comment.desc}</p>
                         </div>

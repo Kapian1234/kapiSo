@@ -12,7 +12,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import Comments from '../comments/Comments';
 import '../../hover.css';
 import moment from "moment"
-moment.locale('zh-cn')
+require('moment/locale/zh-cn')
 
 const Post = ({post}) => {
 
@@ -59,7 +59,7 @@ const Post = ({post}) => {
                    
         </div>
       
-      {commentsOpen && <Comments/>}
+      {commentsOpen && <Comments postId={post.id}/>}
 
       </div>
     </div>
